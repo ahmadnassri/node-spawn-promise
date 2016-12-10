@@ -19,7 +19,7 @@ npm install --only=production --save @ahmadnassri/spawn-promise
 
 ### `spawn (command [, args] [, options] [, input])`
 
-identical to [`child_process.spawn`] in every way, except:
+identical to [`child_process.spawn`][node-spawn] in every way, except:
 
 - writes the `input` value to `stdin`,
 - on success returns a Promise that is fulfilled with a simple object containing both `stdin` & `stdout` buffers.
