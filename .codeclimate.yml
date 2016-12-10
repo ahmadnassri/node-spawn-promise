@@ -6,7 +6,9 @@ engines:
     enabled: true
     config:
       languages:
-      - javascript
+        - javascript
+    exclude_fingerprints:
+      - 91ca2a54221a0969b3be95ab62b683ec
 
   eslint:
     enabled: true
