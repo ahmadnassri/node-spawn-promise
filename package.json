@@ -1,0 +1,39 @@
+{
+  "version": "0.0.0-development",
+  "name": "@ahmadnassri/spawn-promise",
+  "description": "Child Process Spawn as a Promise, with simple in/out piping",
+  "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
+  "homepage": "https://github.com/ahmadnassri/node-spawn-promise",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmadnassri/node-spawn-promise.git"
+  },
+  "license": "ISC",
+  "main": "lib/index.js",
+  "keywords": [
+    "spawn",
+    "promise"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/ahmadnassri/node-spawn-promise/issues"
+  },
+  "scripts": {
+    "pretest": "snazzy && echint",
+    "test": "tap test",
+    "coverage": "tap test --reporter silent --coverage"
+  },
+  "devDependencies": {
+    "echint": "^2.1.0",
+    "snazzy": "^5.0.0",
+    "tap": "^8.0.1"
+  },
+  "dependencies": {
+    "@ahmadnassri/error": "^1.1.0"
+  }
+}
