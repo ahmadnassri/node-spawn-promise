@@ -39,7 +39,7 @@ spawn('grep', ['f'], options, 'foo')
     .then(streams => console.log(streams.stdout))
 ```
 
-----
+---
 > :copyright: [ahmadnassri.com](https://www.ahmadnassri.com/) &nbsp;&middot;&nbsp;
 > License: [ISC][license-url] &nbsp;&middot;&nbsp;
 > Github: [@ahmadnassri](https://github.com/ahmadnassri) &nbsp;&middot;&nbsp;
