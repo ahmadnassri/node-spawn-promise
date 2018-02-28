@@ -29,7 +29,7 @@ const options = {
 
 // success
 spawn('grep', ['f'], options, 'foo')
-    .then(streams => console.log(streams.stdout))
+  .then(streams => console.log(streams.stdout))
 ```
 
 ---
