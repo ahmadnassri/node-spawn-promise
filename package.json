@@ -24,13 +24,13 @@
     "url": "https://github.com/ahmadnassri/node-spawn-promise/issues"
   },
   "scripts": {
-    "pretest": "snazzy && echint",
-    "test": "tap test",
-    "coverage": "tap test --reporter silent --coverage"
+    "pretest": "npm run test:codeclimate",
+    "test": "npm run test:tap",
+    "test:codeclimate": ".scripts/codeclimate analyze",
+    "test:tap": "tap test --lines 100 --functions 70 --branches 78 --statements 92 --coverage-report=lcov --no-browser",
+    "coverage": "opener coverage/lcov-report/index.html"
   },
   "devDependencies": {
-    "echint": "^4.0.1",
-    "snazzy": "^6.0.0",
     "tap": "^10.0.0"
   },
   "dependencies": {
