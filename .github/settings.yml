@@ -1,5 +1,5 @@
 repository:
-  name: node-spawn-error
+  name: node-spawn-promise
   description: Child Process Spawn as a Promise, with simple in/out piping
   topics: node, spawn, promise
   homepage: https://www.ahmadnassri.com
