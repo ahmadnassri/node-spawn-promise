@@ -24,11 +24,8 @@
     "url": "https://github.com/ahmadnassri/node-spawn-promise/issues"
   },
   "scripts": {
-    "pretest": "npm run test:codeclimate",
-    "test": "npm run test:tap",
-    "test:codeclimate": ".scripts/codeclimate analyze",
-    "test:tap": "tap test --lines 100 --functions 70 --branches 78 --statements 92 --coverage-report=lcov --no-browser",
-    "coverage": "opener coverage/lcov-report/index.html"
+    "test": "tap test --no-coverage",
+    "test:100": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "devDependencies": {
     "tap": "^14.1.7"

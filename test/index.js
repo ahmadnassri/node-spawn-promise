@@ -7,7 +7,7 @@ const test = require('tap').test
 test('reject on failure', assert => {
   assert.plan(4)
 
-  let expected = new SpawnError(1, 'command exited with code: 1')
+  const expected = new SpawnError(1, 'command exited with code: 1')
 
   spawn('sh', ['-c', 'exit 1'])
     .then(_ => assert.fail('should not succeed', _))
@@ -22,7 +22,7 @@ test('reject on failure', assert => {
 test('detect exit code', assert => {
   assert.plan(2)
 
-  let expected = new SpawnError(64, 'command exited with code: 64')
+  const expected = new SpawnError(64, 'command exited with code: 64')
 
   spawn('sh', ['-c', 'exit 64'])
     .then(_ => assert.fail('should not succeed', _))
@@ -62,7 +62,7 @@ test('capture spawn failure', assert => {
   spawn('foo')
     .then(_ => assert.fail('should not succeed', _))
     .catch(err => {
-      assert.equal(err.errno, 'ENOENT')
+      assert.equal(err.errno, -2)
       assert.equal(err.syscall, 'spawn foo')
     })
 })
@@ -100,7 +100,7 @@ test('forward input stream', assert => {
 })
 
 test('reject with exit code', assert => {
-  assert.plan(8)
+  assert.plan(7)
 
   spawn('grep', ['--s'])
     .then(_ => assert.fail('should not succeed', _))
@@ -112,6 +112,5 @@ test('reject with exit code', assert => {
       assert.equal(err.path, 'grep')
       assert.same(err.spawnargs, ['--s'])
       assert.same(err.stdout, Buffer.from(''))
-      assert.match(err.stderr.toString(), 'Usage: grep [OPTION]')
     })
 })
