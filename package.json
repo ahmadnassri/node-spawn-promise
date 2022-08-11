@@ -31,6 +31,6 @@
     "tap": "^14.1.7"
   },
   "dependencies": {
-    "@ahmadnassri/error": "^1.1.0"
+    "@ahmadnassri/error": "^2.0.0"
   }
 }
