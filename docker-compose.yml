@@ -1,44 +1,66 @@
-version: '3.8'
-
-x-node: &node
-  tty: true
-  volumes:
-    - type: bind
-      source: .
-      target: /app
-  working_dir: /app
-  command: npm run test
+# ----------------------------------------------- #
+# Note: this file originates in template-node-lib #
+# ----------------------------------------------- #
 
 services:
+  # ---- mega-linter ---- #
   lint:
-    image: github/super-linter:v3
+    profiles: ["dev"]
+    image: oxsecurity/megalinter-javascript:v6.15.0
     volumes:
       - ./:/tmp/lint
     environment:
-      RUN_LOCAL: 'true'
-      MULTI_STATUS: 'false'
+      MEGALINTER_CONFIG: .github/linters/.mega-linter.yml
+      REPORT_OUTPUT_FOLDER: none
+      VALIDATE_ALL_CODEBASE: true
+
+  # ---- readme generator ---- #
+  readme:
+    profiles: ["dev"]
+    image: pandoc/minimal:2.19
+    volumes:
+      - ./:/data
+    command: --defaults=.pandoc.yml
+
+  app:
+    profiles: ["app"]
+    image: node:latest
+    working_dir: /usr/src/lib
+    entrypoint: npm --no-update-notifier --no-fund --no-audit
+    command: start
+    tty: true
+    volumes:
+      - ./:/usr/src/lib
+    environment:
+      NODE_ENV: test
+
+  test-command:
+    extends: app
+    command: run test -- --reporter=classic
+
+  test-coverage:
+    extends: app
+    command: run test:ci -- --reporter=classic
 
   test:
-    <<: *node
-    image: node:alpine
+    profiles: ["test"]
+    extends: test-command
     depends_on:
-      - node10
-      - node12
-      - node13
       - node14
-
-  node10:
-    <<: *node
-    image: node:10-alpine
-
-  node12:
-    <<: *node
-    image: node:12-alpine
-
-  node13:
-    <<: *node
-    image: node:13-alpine
+      - node16
+      - node18
 
   node14:
-    <<: *node
+    profiles: ["test"]
+    extends: test-command
     image: node:14-alpine
+
+  node16:
+    profiles: ["test"]
+    extends: test-command
+    image: node:16-alpine
+
+  node18:
+    profiles: ["test"]
+    extends: test-command
+    image: node:18-alpine

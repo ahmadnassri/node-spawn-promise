@@ -1,0 +1,8 @@
+version: 2.0
+
+id: node-spawn-promise
+
+about:
+  title: Spawn Promise
+  description: Child Process Spawn as a Promise, with simple in/out piping
+  repository: ahmadnassri/node-spawn-promise
