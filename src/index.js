@@ -5,14 +5,14 @@ module.exports = function (cmd, args, opts, input) {
   return new Promise((resolve, reject) => {
     let stdout = []
     let stderr = []
-    let options = Object.assign({}, opts)
+    const options = Object.assign({}, opts)
 
     // ensure no override
     if (options.stdio) {
       delete options.stdio
     }
 
-    let child = spawn(cmd, args, options)
+    const child = spawn(cmd, args, options)
 
     child.on('error', err => reject(new SpawnError(1, err)))
     /* istanbul ignore next */
@@ -37,7 +37,7 @@ module.exports = function (cmd, args, opts, input) {
         return resolve({ stdout, stderr })
       }
 
-      let error = new SpawnError(code, `command exited with code: ${code}`, stdout, stderr)
+      const error = new SpawnError(code, `command exited with code: ${code}`, stdout, stderr)
 
       // emulate actual Child Process Errors
       error.path = cmd
