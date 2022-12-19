@@ -1,8 +1,6 @@
-'use strict'
-
-const SpawnError = require('../lib/error')
-const spawn = require('../lib')
-const test = require('tap').test
+const SpawnError = require('../src/error')
+const spawn = require('../src')
+const { test } = require('tap')
 
 test('reject on failure', assert => {
   assert.plan(4)

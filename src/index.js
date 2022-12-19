@@ -17,8 +17,11 @@ module.exports = function (cmd, args, opts, input) {
     let child = spawn(cmd, args, options)
 
     child.on('error', err => reject(new SpawnError(1, err)))
+    /* istanbul ignore next */
     child.stdout.on('error', err => reject(new SpawnError(1, err)))
+    /* istanbul ignore next */
     child.stderr.on('error', err => reject(new SpawnError(1, err)))
+    /* istanbul ignore next */
     child.stdin.on('error', err => reject(new SpawnError(1, err)))
 
     child.stdout.on('data', data => stdout.push(data))
@@ -27,7 +30,9 @@ module.exports = function (cmd, args, opts, input) {
     child.stdin.end(input)
 
     child.on('close', code => {
+      /* istanbul ignore next */
       stdout = [undefined, 'buffer'].indexOf(options.encoding) > -1 ? Buffer.concat(stdout) : stdout.join('').trim()
+      /* istanbul ignore next */
       stderr = [undefined, 'buffer'].indexOf(options.encoding) > -1 ? Buffer.concat(stderr) : stderr.join('').trim()
 
       if (code === 0) {
