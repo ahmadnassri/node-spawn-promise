@@ -1,6 +1,4 @@
-'use strict'
-
-const spawn = require('child_process').spawn
+const spawn = require('node:child_process').spawn
 const SpawnError = require('./error')
 
 module.exports = function (cmd, args, opts, input) {

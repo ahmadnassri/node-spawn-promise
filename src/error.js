@@ -1,5 +1,3 @@
-'use strict'
-
 const ExtendableError = require('@ahmadnassri/error')
 
 module.exports = class SpawnError extends ExtendableError {
