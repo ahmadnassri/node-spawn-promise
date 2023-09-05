@@ -1,7 +1,7 @@
 {
   "name": ["@ahmadnassri/spawn-promise"],
-  "include": [
-    { "id": "NPM", "registry": "https://registry.npmjs.org" },
-    { "id": "GITHUB", "registry": "https://npm.pkg.github.com" }
+  "registry": [
+    { "id": "NPM", "url": "https://registry.npmjs.org" },
+    { "id": "GITHUB", "url": "https://npm.pkg.github.com" }
   ]
 }
