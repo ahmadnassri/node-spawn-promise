@@ -30,7 +30,7 @@
     "test:report": "opener coverage/lcov-report/index.html"
   },
   "devDependencies": {
-    "tap": "^16.3.2"
+    "tap": "^18.4.3"
   },
   "dependencies": {
     "@ahmadnassri/error": "^2.0.0"
